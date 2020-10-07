@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rastreo/views/home.dart';
-import 'package:rastreo/views/test.dart';
 void main() {
   runApp(MyApp());
 }
