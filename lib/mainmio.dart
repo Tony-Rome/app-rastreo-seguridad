@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:rastreo/views/rutanueva.dart';
 import 'package:rastreo/views/rutavieja.dart';
-import 'package:rastreo/viewss/contactos.dart';
-import 'package:rastreo/viewss/login.dart';
-import 'package:rastreo/viewss/registro.dart';
-import 'package:rastreo/viewss/rutas.dart';
+import 'package:rastreo/views/contactos.dart';
+import 'package:rastreo/views/login.dart';
+import 'package:rastreo/views/registro.dart';
+import 'package:rastreo/views/rutas.dart';
 
 
 void main() {

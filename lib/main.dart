@@ -1,18 +1,8 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:rastreo/views/home.dart';
-=======
-<<<<<<< HEAD
 import 'package:rastreo/vistas/contactos.dart';
-=======
 import 'package:rastreo/views/home.dart';
-<<<<<<< HEAD
->>>>>>> c0bbe59c44d1341a7c6250621a60a129b3145061
-
-=======
-import 'package:rastreo/views/test.dart;
->>>>>>> 20b0e60dce855f685a838ce16bee789e29d2b893
->>>>>>> master
+import 'package:rastreo/views/test.dart';
 void main() {
   runApp(MyApp());
 }
@@ -39,12 +29,8 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
       home: Contactos(),
-=======
->>>>>>> master
+
       initialRoute: 'home_page',
       routes: {
         'home_page' : (BuildContext context) => HomePage(), 
@@ -53,10 +39,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
   final String title;
 
   @override
@@ -126,10 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
->>>>>>> c0bbe59c44d1341a7c6250621a60a129b3145061
+
     );
   }
 }
-=======
->>>>>>> 20b0e60dce855f685a838ce16bee789e29d2b893
->>>>>>> master
