@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:rastreo/vistas/contactos.dart';
 =======
 import 'package:rastreo/views/home.dart';
+<<<<<<< HEAD
 >>>>>>> c0bbe59c44d1341a7c6250621a60a129b3145061
 
+=======
+import 'package:rastreo/views/test.dart;
+>>>>>>> 20b0e60dce855f685a838ce16bee789e29d2b893
 void main() {
   runApp(MyApp());
 }
@@ -25,23 +29,14 @@ class MyApp extends StatelessWidget {
       initialRoute: 'home_page',
       routes: {
         'home_page' : (BuildContext context) => HomePage(),
+	'test_page' : (BuildContext context) => TestPage(), 
       },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
+<<<<<<< HEAD
   final String title;
 
   @override
@@ -115,3 +110,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+=======
+>>>>>>> 20b0e60dce855f685a838ce16bee789e29d2b893
