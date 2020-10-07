@@ -13,7 +13,7 @@ class _ContactosState extends State<Contactos> {
       body:Column( children: <Widget>[
         Botonagregar(),
         Listacontactos()]),
-      floatingActionButton: Botonsolicitudes() ,
+      floatingActionButton: BotonSolicitudes() ,
     );
   }
 }
@@ -47,8 +47,14 @@ class Botoncontacto extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Padding(padding:EdgeInsets.symmetric(horizontal:10, vertical:5) ,child: nombre),
-    );
+      child: Padding(padding:EdgeInsets.symmetric(horizontal:10, vertical:5) ,
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: <Widget>[
+        nombre,
+        Row(children: <Widget>[
+          Padding(padding: EdgeInsets.symmetric(horizontal:2),child:RaisedButton(color:Colors.blue,onPressed: (){print('ver');},child:Text('Ver'))),
+          Padding(padding: EdgeInsets.symmetric(horizontal:2),child:RaisedButton(color:Colors.blue,onPressed:(){print('eliminar');},child:Text('Eliminar'))),],)
+      ],),
+      ),);
   }
 }
 
@@ -65,17 +71,45 @@ class Botonagregar extends StatelessWidget {
   }
 }
 
-class Botonsolicitudes extends StatelessWidget {
+class BotonSolicitudes extends StatefulWidget {
+  @override
+  _BotonSolicitudesState createState() => _BotonSolicitudesState();
+}
+
+class _BotonSolicitudesState extends State<BotonSolicitudes> {
+  var solicitudes = ['Maria','Pedro','Jose'];
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      onPressed: () {
-        showBottomSheet(
-            context: context,
-            builder: (context) => Container(
-                  height: 100,
-                  color: Colors.red,
-                ));
-      },
-    );
-}}   
+      child:Icon(Icons.group_add),
+      onPressed: (){
+       showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text("Solicitudes de contactos"),
+              content: Container(height: 200,width: 200,child:solicitud(solicitudes)),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('Cerrar'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            ));});}
+
+Widget solicitud(solicitudes){
+  return ListView.separated(
+    itemCount: solicitudes.length,
+    itemBuilder: (BuildContext context, int index){
+          return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children:<Widget>[
+            Text(solicitudes[index]),
+            Row(children:<Widget>[
+              IconButton(icon: Icon(Icons.beenhere), onPressed: null),
+              IconButton(icon: Icon(Icons.delete), onPressed: null),
+            ]),
+            ]);
+        },
+        separatorBuilder: (context, index) => Divider(
+        color: Colors.black,));}
+}
