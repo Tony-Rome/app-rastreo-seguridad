@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:rastreo/views/home.dart';
 import 'package:rastreo/vistas/contactos.dart';
 import 'package:rastreo/views/home.dart';
-import 'package:rastreo/views/test.dart';
+import 'package:rastreo/views/map.dart';
+import 'package:rastreo/views/profile.dart';
+import 'package:rastreo/views/settings.dart';
+import 'package:rastreo/views/rutanueva.dart';
+import 'package:rastreo/views/rutavieja.dart';
+import 'package:rastreo/views/contactos.dart';
+import 'package:rastreo/views/login.dart';
+import 'package:rastreo/views/registro.dart';
+import 'package:rastreo/views/rutas.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -34,6 +43,16 @@ class MyApp extends StatelessWidget {
       initialRoute: 'home_page',
       routes: {
         'home_page' : (BuildContext context) => HomePage(), 
+        'home_page' : (BuildContext context) => HomePage(),
+        'profile_page' : (BuildContext context) => ProfilePage(),
+        'map_page' : (BuildContext context) => MapPage(),
+        'settings_page' : (BuildContext context) => SettingsPage(),
+	'login' : (BuildContext context) => Login(),
+        'contactos' : (BuildContext context) => Contactos(),
+        'registro' : (BuildContext context) => Registro(),
+        'rutas' : (BuildContext context) => Rutas(),
+        'rutavieja': (BuildContext context) => Rutavieja('Ruta X'),
+        'rutanueva': (BuildContext context) => Rutanueva(),
       },
     );
   }

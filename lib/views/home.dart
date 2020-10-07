@@ -23,8 +23,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                 DropdownButtonHideUnderline(
-                  child: DropdownButton(
+                 DropdownButton(
                     value: _routsSelected,
                     onChanged:  (String newRout){
                       setState((){
@@ -37,9 +36,32 @@ class _HomePageState extends State<HomePage> {
                         value: rout
                         );
                     }).toList(),
-                  )
-                ), 
-                 Container(
+                  ),
+                
+                 activateRouteButton(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                  contactsButton(),
+                  mapButton(),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                  routesButton(),
+                  settingsButton(),                 
+                  ],
+                ),
+              ],),
+          ),
+        )
+        )
+    );
+  }
+
+  Widget activateRouteButton(){
+    return Container(
                     margin: EdgeInsets.only(top:30.0),
                     padding: EdgeInsets.symmetric(vertical: 15.0),
                     width: 200.0,
@@ -55,11 +77,11 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.red,
                           child: Text('Activar ruta'),
                       ),
-                  ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                  Container(
+                  );
+  }
+
+  Widget contactsButton(){
+    return Container(
                     margin: EdgeInsets.only(top:30.0),
                     padding: EdgeInsets.symmetric(vertical: 15.0),
                     width: 150.0,
@@ -75,15 +97,18 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.red,
                           child: Text('Contactos'),
                       ),
-                  ),
-                  Container(
+                  );
+  }
+
+  Widget mapButton() {
+    return Container(
                     margin: EdgeInsets.only(top:30.0),
                     padding: EdgeInsets.symmetric(vertical: 15.0),
                     width: 150.0,
                     child: RaisedButton(
                         //disabledColor: Colors.black, color desabilitado
                           elevation: 5.0,      
-                          onPressed: (){},
+                          onPressed: () => Navigator.pushNamed(context, 'map_page'),
                           padding: EdgeInsets.all(15.0),
                           shape: RoundedRectangleBorder(
                             side: BorderSide(color: Colors.red, width: 2.0),
@@ -92,13 +117,11 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.red,
                           child: Text('Mapa'),
                       ),
-                  ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                  Container(
+                  );
+  }
+
+  Widget routesButton() {
+    return Container(
                     margin: EdgeInsets.only(top:30.0),
                     padding: EdgeInsets.symmetric(vertical: 15.0),
                     width: 150.0,
@@ -114,15 +137,18 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.red,
                           child: Text('Rutas'),
                       ),
-                  ),
-                  Container(
+                  );
+  }
+
+  Widget settingsButton() {
+    return  Container(
                     margin: EdgeInsets.only(top:30.0),
                     padding: EdgeInsets.symmetric(vertical: 15.0),
                     width: 150.0,
                     child: RaisedButton(
                         //disabledColor: Colors.black, color desabilitado
                           elevation: 5.0,      
-                          onPressed: (){},
+                          onPressed: () => Navigator.pushNamed(context, 'settings_page'),
                           padding: EdgeInsets.all(15.0),
                           shape: RoundedRectangleBorder(
                             side: BorderSide(color: Colors.red, width: 2.0),
@@ -131,13 +157,6 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.red,
                           child: Text('Ajustes'),
                       ),
-                  ),
-                  ],
-                ),
-              ],),
-          ),
-        )
-        )
-    );
+                  );
   }
 }
