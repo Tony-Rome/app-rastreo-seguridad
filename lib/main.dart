@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rastreo/views/home.dart';
-import 'package:rastreo/views/test.dart;
+import 'package:rastreo/views/test.dart';
 void main() {
   runApp(MyApp());
 }
@@ -29,8 +29,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: 'home_page',
       routes: {
-        'home_page' : (BuildContext context) => HomePage(),
-	'test_page' : (BuildContext context) => TestPage(), 
+        'home_page' : (BuildContext context) => HomePage(), 
       },
     );
   }
