@@ -26,15 +26,7 @@ class BodyLogin extends StatelessWidget {
   }
 }
 
-class FormLogin extends StatefulWidget {
-  @override
-  FormLoginState createState() {
-    return FormLoginState();
-  }
-}
-
-
-class FormLoginState extends State<FormLogin> {
+class FormLogin extends StatelessWidget { 
 
   final _loginBloc = LoginBloc(); 
 
@@ -87,8 +79,7 @@ class FormLoginState extends State<FormLogin> {
   // ======= FUNCIONES ==========
   void submit(){
 	Navigator.pushNamed(context, 'home_page');
-   /*  if (_formKey.currentState.validate()) {
-                Scaffold.of(context).showSnackBar(SnackBar(content: Text('Iniciando Sesión')));} */
+   
   }
 
   
