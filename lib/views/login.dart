@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rastreo/bloc/bloc_login.dart';
 
 class Login extends StatelessWidget {
   @override
@@ -34,50 +35,61 @@ class FormLogin extends StatefulWidget {
 
 
 class FormLoginState extends State<FormLogin> {
-  final _formKey = GlobalKey<FormState>();
-  String _usuario;
-  String _clave;
+
+  final _loginBloc = LoginBloc(); 
+
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
+    return Column(
         children: <Widget>[
-          Padding(padding: EdgeInsets.symmetric(vertical:5,horizontal:50), child:TextFormField(
-          decoration: const InputDecoration(
-            icon: Icon(Icons.mail),
-            hintText: 'usuario@hotmail.com',
-            labelText: 'Mail',
-          ),
-          validator: (value) {
-              if (value.isEmpty) {
-                return 'Campo vacío';
-              }
-              return null;
-            },
-          onSaved: (value) => _usuario=value,
-        )),
-          Padding(padding: EdgeInsets.symmetric(vertical:5,horizontal:50), child:TextFormField(
-          obscureText: true,
-          decoration: const InputDecoration(
-            icon: Icon(Icons.vpn_key),
-            hintText: '***********',
-            labelText: 'Contraseña',
-          ),
-          validator: (value) {
-              if (value.isEmpty) {
-                return 'Campo vacío';
-              }
-              return null;
-            },
-          onSaved: (value) => _clave=value,
-        )),
-        RaisedButton(
-          color: Colors.blue,
-          onPressed: () {
-            if (_formKey.currentState.validate()) {
-              Scaffold.of(context).showSnackBar(SnackBar(content: Text('Iniciando Sesión')));}},
-        child: Text('Iniciar Sesión'),),
-        ]));
+
+          Padding(padding: EdgeInsets.symmetric(vertical:5,horizontal:50), 
+          child:StreamBuilder(
+            stream: _loginBloc.email,
+            builder: (context, snapshot){
+              return TextFormField(
+                onChanged: _loginBloc.changeEmail,
+                decoration: InputDecoration(
+                  icon: Icon(Icons.mail),
+                  hintText: 'usuario@hotmail.com',
+                  labelText: 'Mail',
+                  errorText: snapshot.error,
+                ),
+            );},)),
+
+          Padding(padding: EdgeInsets.symmetric(vertical:5,horizontal:50), 
+            child:StreamBuilder(
+            stream:  _loginBloc.password,
+            builder: (context, snapshot){
+              return TextFormField(
+                obscureText: true,
+                onChanged: _loginBloc.changePassword,
+                decoration: InputDecoration(
+                  icon: Icon(Icons.vpn_key),
+                  hintText: '***********',
+                  labelText: 'Contraseña',
+                  errorText: snapshot.error
+                ),
+              );})),
+
+        StreamBuilder(
+          stream: _loginBloc.submitLogin,
+          builder: (context, snapshot){
+            return RaisedButton(
+            color: Colors.blue,
+            onPressed: snapshot.hasData ? ()=>submit() : null , //boton inhabilitado hasta que snapsho.hasData == true
+          child: Text('Iniciar Sesión'),
+          );}),
+
+        ]);
   }
+
+  // ======= FUNCIONES ==========
+  void submit(){
+	Navigator.pushNamed(context, 'home_page');
+   /*  if (_formKey.currentState.validate()) {
+                Scaffold.of(context).showSnackBar(SnackBar(content: Text('Iniciando Sesión')));} */
+  }
+
+  
 }
