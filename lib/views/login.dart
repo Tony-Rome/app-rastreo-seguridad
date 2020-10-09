@@ -69,7 +69,7 @@ class FormLogin extends StatelessWidget {
           builder: (context, snapshot){
             return RaisedButton(
             color: Colors.blue,
-            onPressed: snapshot.hasData ? ()=>submit() : null , //boton inhabilitado hasta que snapsho.hasData == true
+            onPressed: snapshot.hasData ? ()=>submit(context) : null , //boton inhabilitado hasta que snapsho.hasData == true
           child: Text('Iniciar Sesión'),
           );}),
 
@@ -77,7 +77,7 @@ class FormLogin extends StatelessWidget {
   }
 
   // ======= FUNCIONES ==========
-  void submit(){
+  void submit(BuildContext context){
 	Navigator.pushNamed(context, 'home_page');
    
   }
