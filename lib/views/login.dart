@@ -26,15 +26,7 @@ class BodyLogin extends StatelessWidget {
   }
 }
 
-class FormLogin extends StatefulWidget {
-  @override
-  FormLoginState createState() {
-    return FormLoginState();
-  }
-}
-
-
-class FormLoginState extends State<FormLogin> {
+class FormLogin extends StatelessWidget { 
 
   final _loginBloc = LoginBloc(); 
 
@@ -77,7 +69,7 @@ class FormLoginState extends State<FormLogin> {
           builder: (context, snapshot){
             return RaisedButton(
             color: Colors.blue,
-            onPressed: snapshot.hasData ? ()=>submit() : null , //boton inhabilitado hasta que snapsho.hasData == true
+            onPressed: snapshot.hasData ? ()=>submit(context) : null , //boton inhabilitado hasta que snapsho.hasData == true
           child: Text('Iniciar Sesión'),
           );}),
 
@@ -85,10 +77,9 @@ class FormLoginState extends State<FormLogin> {
   }
 
   // ======= FUNCIONES ==========
-  void submit(){
+  void submit(BuildContext context){
 	Navigator.pushNamed(context, 'home_page');
-   /*  if (_formKey.currentState.validate()) {
-                Scaffold.of(context).showSnackBar(SnackBar(content: Text('Iniciando Sesión')));} */
+   
   }
 
   
