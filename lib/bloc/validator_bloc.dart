@@ -1,12 +1,10 @@
 import 'dart:async';
 
 const String _emailRule = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9-.]+$";
+const String _nameRule = r"[a-zA-Z]\s[a-zA-Z]+$";
 
 class ValidatorBloc {
-
-
- 
-
+  
     final validateEmail = StreamTransformer<String, String>.fromHandlers(
     handleData: (email,sink){
 
@@ -41,6 +39,7 @@ class ValidatorBloc {
 
       }
   );
+
   final validatePasswordRepeated = StreamTransformer<String, String>.fromHandlers(
     handleData: (passwordRepeated,sink){
       if (passwordRepeated.length < 3){
@@ -49,6 +48,35 @@ class ValidatorBloc {
         sink.add(passwordRepeated);
       }
     }
+  );
+
+  final validateName = StreamTransformer<String, String>.fromHandlers(
+    handleData: (name,sink){
+      if(name.length > 1){
+        final RegExp nameRegExp = new RegExp(_nameRule);
+        if (!nameRegExp.hasMatch(name) || name.isEmpty){
+          sink.addError('Los nombres no coinciden con el formato.');
+        }else {
+          sink.add(name);
+        }
+      }else{
+        sink.addError('');
+      }
+      }
+  );
+  final validateName2 = StreamTransformer<String, String>.fromHandlers(
+    handleData: (name,sink){
+      if(name.length > 1){
+        final RegExp nameRegExp = new RegExp(_nameRule);
+        if (!nameRegExp.hasMatch(name) || name.isEmpty){
+          sink.addError('Los apellidos no coinciden con el formato.');
+        }else {
+          sink.add(name);
+        }
+      }else{
+        sink.addError('');
+      }
+      }
   );
 }
  

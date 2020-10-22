@@ -42,7 +42,6 @@ class FormLoginState extends State<FormLogin> {
   Widget build(BuildContext context) {
     return Column(
         children: <Widget>[
-
           Padding(padding: EdgeInsets.symmetric(vertical:5,horizontal:50), 
           child:StreamBuilder(
             stream: _loginBloc.email,
