@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Contactos(),
 
-      initialRoute: 'login',
+      initialRoute: 'registro',
       routes: {
         'home_page' : (BuildContext context) => HomePage(), 
         'profile_page' : (BuildContext context) => ProfilePage(),
